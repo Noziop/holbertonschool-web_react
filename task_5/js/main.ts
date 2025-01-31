@@ -1,25 +1,25 @@
-// Brand pour différencier les types de crédits
-interface MajorCredits {
+// Déclaration des interfaces avec marqueurs nominaux
+export interface MajorCredits {
     credits: number;
-    readonly brand: "MajorCredits";  // Brand property
+    _majorCreditBrand: void; // Marqueur nominal unique
 }
 
-interface MinorCredits {
+export interface MinorCredits {
     credits: number;
-    readonly brand: "MinorCredits";  // Brand property
+    _minorCreditBrand: void; // Marqueur nominal unique
 }
 
-// Fonctions pour sommer les crédits
-function sumMajorCredits(subject1: MajorCredits, subject2: MajorCredits): MajorCredits {
+// Implémentation des fonctions de somme
+export function sumMajorCredits(subject1: MajorCredits, subject2: MajorCredits): MajorCredits {
     return {
         credits: subject1.credits + subject2.credits,
-        brand: "MajorCredits"
-    };
+        _majorCreditBrand: undefined
+    } as MajorCredits;
 }
 
-function sumMinorCredits(subject1: MinorCredits, subject2: MinorCredits): MinorCredits {
+export function sumMinorCredits(subject1: MinorCredits, subject2: MinorCredits): MinorCredits {
     return {
         credits: subject1.credits + subject2.credits,
-        brand: "MinorCredits"
-    };
+        _minorCreditBrand: undefined
+    } as MinorCredits;
 }
